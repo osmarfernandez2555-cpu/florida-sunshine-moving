@@ -298,7 +298,7 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
 .loc-card{background:var(--cream);border-radius:24px;box-shadow:var(--shadow-card);padding:1.8rem;display:flex;flex-direction:column;gap:1.2rem}
 .loc-card h3{margin:0;font-family:var(--f-display);font-weight:400;font-size:1.9rem;line-height:1.05}
 .loc-lines{display:grid;gap:.85rem;margin:0;padding:0;list-style:none}
-.loc-lines li{display:flex;gap:.7rem;align-items:center;font-weight:600}
+.loc-lines li{display:flex;gap:.7rem;align-items:center;font-weight:600;overflow-wrap:anywhere}
 .loc-lines .icon{color:var(--coral)}
 .loc-lines a{text-decoration:none}
 .loc-lines a:hover{text-decoration:underline}
@@ -623,6 +623,7 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
             <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a id="phoneLink" href="#">[Phone number]</a></li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><span data-i18n="l.hours">Open 24 hours</span></li>
             <li><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><a class="js-wa" href="#" target="_blank" rel="noopener" data-i18n="l.wa">Message us on WhatsApp</a></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a class="js-mail" href="#">Sunshinemovingco1@gmail.com</a></li>
           </ul>
           <div class="loc-btns"><a class="btn btn-ink js-maps" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span data-i18n="l.dir">Get directions</span></a><a class="btn btn-call js-call" href="#"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="c.call">Call now</span></a></div>
         </div>
@@ -696,7 +697,7 @@ const CONFIG = {
   phoneDisplay: "(954) 937-9924",     // How the phone is shown on the page
   phoneTel: "+19549379924",           // Phone for the call link
   smsTel: "+19549379924",             // Number for text messages (SMS)
-  email: "info@sunshinemoving.com",   // <-- CHANGE to the real email
+  email: "Sunshinemovingco1@gmail.com", // Email for the Email button
   maps: "https://maps.app.goo.gl/cGnaMMCpFcc8npmz8?g_st=iw",
   // Google reviews ------------------------------------------------
   reviewsUrl: "https://maps.app.goo.gl/cGnaMMCpFcc8npmz8?g_st=iw",  // where "Read our reviews" goes
