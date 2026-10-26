@@ -75,6 +75,12 @@ button{font:inherit;color:inherit}
 .btn-wa:hover{background:#176639;transform:translateY(-2px)}
 .btn-call{background:var(--blue-deep);color:#fff}
 .btn-call:hover{background:#1B1798;transform:translateY(-2px)}
+.btn-sms{background:var(--teal-deep);color:#fff}
+.btn-sms:hover{background:#085258;transform:translateY(-2px)}
+.btn-mail{background:var(--coral-deep);color:#fff}
+.btn-mail:hover{background:#A92E1D;transform:translateY(-2px)}
+.send-or{margin:1rem 0 .6rem;text-align:center;font-weight:700;font-size:.9rem;color:var(--ink-soft)}
+.send-alt{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .btn-row{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem}
 .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none}
 
@@ -127,6 +133,8 @@ button{font:inherit;color:inherit}
 .hero-grid{position:relative;display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(2rem,4vw,4rem);align-items:start}
 @media (max-width:960px){.hero-grid{grid-template-columns:1fr}}
 .hero-grid > .label{order:-1}
+.hero-grid > .includes{align-self:start}
+@media (min-width:961px){.hero-grid > .includes ul{grid-template-columns:1fr}}
 .hero-grid > .contact-row{order:-2;grid-column:1/-1;margin:0}
 .hero-grid{row-gap:1.5rem}
 @media (max-width:960px){.hero-grid{row-gap:2.5rem}.hero-grid > .contact-row{margin-bottom:-1rem}}
@@ -217,7 +225,6 @@ legend{padding:0}
 
 /* ---------- Sections ---------- */
 .sec{padding:clamp(3.5rem,7vw,6rem) 0}
-.inc-sec{padding-bottom:0}
 #services{padding-top:clamp(3rem,6vw,5rem) !important}
 .sec-head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:1rem 2rem;margin-bottom:2.4rem}
 h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,5vw,3.6rem);line-height:1;color:var(--ink);text-wrap:balance}
@@ -463,28 +470,11 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
     </div>
     <div class="wrap hero-grid">
         <nav class="contact-row" aria-label="Contact us">
-          <a class="cbtn cbtn-wa js-wa" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
           <a class="cbtn cbtn-call js-call" href="#"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span data-i18n="c.callShort">Call</span></a>
+          <a class="cbtn cbtn-wa js-wa" href="#" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
           <a class="cbtn cbtn-sms js-sms" href="#"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg><span data-i18n="c.sms">Text</span></a>
           <a class="cbtn cbtn-mail js-mail" href="#"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></a>
         </nav>
-      <div>
-
-        <ul class="hero-list">
-          <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span data-i18n="hl.1">Local &amp; long-distance moving</span></li>
-          <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span data-i18n="hl.2">Packing</span></li>
-          <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span data-i18n="hl.3">Dumpster &amp; junk removal</span></li>
-          <li><span class="ck" aria-hidden="true"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></span><span data-i18n="hl.4">Furniture assembly &amp; more</span></li>
-        </ul>
-        <div class="hero-actions">
-          <a class="btn btn-ink" href="#quote"><span data-i18n="hero.cta">Get my free quote</span><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-          <a class="btn btn-ghost" href="#how" data-i18n="hero.cta2">See how it works</a>
-        </div>
-        <p class="side-note">
-          <svg viewBox="0 0 64 24" aria-hidden="true"><path d="M2 18c14-10 30-12 52-4" fill="none" stroke="#1C1712" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 5"/><path d="M50 9l6 5-7 3" fill="none" stroke="#1C1712" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          <span data-i18n="hero.note">3 quick steps · reply on WhatsApp</span>
-        </p>
-      </div>
 
       <!-- Quote form styled as a shipping label -->
       <div class="label" id="quote" aria-labelledby="qTitle">
@@ -552,7 +542,12 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
             <p class="err" id="err3" role="alert"></p>
             <div class="panel-nav">
               <button class="btn btn-ghost" type="button" data-prev="2" aria-label="Back"><svg class="icon" aria-hidden="true"><use href="#i-back"/></svg></button>
-              <button class="btn btn-wa" type="submit"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="q.send">Send on WhatsApp</span></button>
+              <button class="btn btn-wa" type="submit" data-via="wa"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg><span data-i18n="q.send">Send on WhatsApp</span></button>
+            </div>
+            <p class="send-or" data-i18n="q.or">or send it by</p>
+            <div class="send-alt">
+              <button class="btn btn-sms" type="submit" data-via="sms"><svg class="icon" aria-hidden="true"><use href="#i-sms"/></svg><span data-i18n="q.sendSms">Text</span></button>
+              <button class="btn btn-mail" type="submit" data-via="mail"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><span>Email</span></button>
             </div>
           </div>
 
@@ -566,6 +561,16 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
 
         <div class="label-foot"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg><span data-i18n="q.privacy">We only use your info to prepare your quote.</span></div>
       </div>
+        <div class="includes" id="includes">
+          <h2 id="incTitle" data-i18n="s.incT">Every move includes</h2>
+          <ul>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-blanket"/></svg><div><strong data-i18n="s.i1t">Protective furniture blankets</strong><span data-i18n="s.i1d">For TVs and glass items.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg><div><strong data-i18n="s.i2t">Mattress bags</strong><span data-i18n="s.i2d">Keeps your mattress clean and protected.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-roll"/></svg><div><strong data-i18n="s.i3t">Plastic shrink wrap</strong><span data-i18n="s.i3d">Protects furniture from scratches and dust.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg><div><strong data-i18n="s.i4t">Tools</strong><span data-i18n="s.i4d">To take apart and reassemble beds.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-dolly"/></svg><div><strong data-i18n="s.i5t">Moving dollies</strong><span data-i18n="s.i5d">To move furniture and heavy items safely.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
+          </ul>
+        </div>
     </div>
   </section>
 
@@ -583,20 +588,6 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
     </div>
   </section>
 
-  <section class="sec inc-sec" aria-labelledby="incTitle">
-    <div class="wrap">
-        <div class="includes" id="includes">
-          <h2 id="incTitle" data-i18n="s.incT">Every move includes</h2>
-          <ul>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-blanket"/></svg><div><strong data-i18n="s.i1t">Protective furniture blankets</strong><span data-i18n="s.i1d">For TVs and glass items.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-bed"/></svg><div><strong data-i18n="s.i2t">Mattress bags</strong><span data-i18n="s.i2d">Keeps your mattress clean and protected.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-roll"/></svg><div><strong data-i18n="s.i3t">Plastic shrink wrap</strong><span data-i18n="s.i3d">Protects furniture from scratches and dust.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg><div><strong data-i18n="s.i4t">Tools</strong><span data-i18n="s.i4d">To take apart and reassemble beds.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
-            <li><svg class="icon" aria-hidden="true"><use href="#i-dolly"/></svg><div><strong data-i18n="s.i5t">Moving dollies</strong><span data-i18n="s.i5d">To move furniture and heavy items safely.</span></div><svg class="icon tick" aria-hidden="true"><use href="#i-check"/></svg></li>
-          </ul>
-        </div>
-    </div>
-  </section>
 
   <section class="sec" id="services" aria-labelledby="svcTitle" style="padding-top:0">
     <div class="wrap">
@@ -775,8 +766,8 @@ h2{margin:0;font-family:var(--f-display);font-weight:400;font-size:clamp(2.3rem,
 
 <div class="quickbar" id="quickbar">
   <a class="btn btn-sun" href="#quote" data-i18n="nav.quote">Free Quote</a>
-  <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>
   <a class="btn btn-call js-call" href="#" aria-label="Call"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></a>
+  <a class="btn btn-wa js-wa" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="icon" aria-hidden="true"><use href="#i-wa"/></svg></a>
 </div>
 
 <script>
@@ -815,7 +806,7 @@ const I18N = {
     "q.p1":"How big is your move?","q.p2":"Where and when are you moving?","q.p3":"Where should we send your quote?",
     "q.next":"Next","q.from":"Ship from · ZIP","q.to":"Ship to · ZIP","q.date":"Move date",
     "q.name":"Full name","q.phone":"Phone","q.notes":"Anything special? (optional)","q.notesPh":"Piano, stairs, junk to haul…",
-    "q.send":"Send on WhatsApp","q.doneStamp":"Got it!","q.done":"Thank you! A moving specialist will contact you shortly.",
+    "q.send":"Send on WhatsApp","q.or":"or send it by","q.sendSms":"Text","q.doneStamp":"Got it!","q.done":"Thank you! A moving specialist will contact you shortly.",
     "q.chat":"Chat with a specialist now","q.privacy":"We only use your info to prepare your quote.",
     "size.studio":"Studio","size.1":"1 Bedroom","size.2":"2 Bedrooms","size.3":"3 Bedrooms","size.4":"4+ Bedrooms",
     "e.size":"Pick a move size to continue.","e.zip":"Enter both 5-digit ZIP codes.","e.date":"Choose your move date.",
@@ -864,7 +855,7 @@ const I18N = {
     "q.p1":"¿Qué tamaño tiene tu mudanza?","q.p2":"¿Desde dónde, hacia dónde y cuándo?","q.p3":"¿A dónde te enviamos la cotización?",
     "q.next":"Siguiente","q.from":"Desde · ZIP","q.to":"Hasta · ZIP","q.date":"Fecha de mudanza",
     "q.name":"Nombre completo","q.phone":"Teléfono","q.notes":"¿Algo especial? (opcional)","q.notesPh":"Piano, escaleras, cosas para tirar…",
-    "q.send":"Enviar por WhatsApp","q.doneStamp":"¡Listo!","q.done":"¡Gracias! Un especialista en mudanzas te va a contactar en breve.",
+    "q.send":"Enviar por WhatsApp","q.or":"o envialo por","q.sendSms":"Mensaje","q.doneStamp":"¡Listo!","q.done":"¡Gracias! Un especialista en mudanzas te va a contactar en breve.",
     "q.chat":"Hablar con un especialista ahora","q.privacy":"Solo usamos tus datos para preparar tu cotización.",
     "size.studio":"Monoambiente","size.1":"1 dormitorio","size.2":"2 dormitorios","size.3":"3 dormitorios","size.4":"4+ dormitorios",
     "e.size":"Elegí el tamaño de la mudanza para seguir.","e.zip":"Ingresá los dos códigos ZIP de 5 dígitos.","e.date":"Elegí la fecha de la mudanza.",
@@ -1068,10 +1059,14 @@ form.addEventListener("submit", e => {
     `• ${t("wa.phone")}: ${v("phone")}`
   ];
   if (v("notes")) lines.push(`• ${t("wa.notes")}: ${v("notes")}`);
-  const url = waLink(lines.join("\n"));
-  document.getElementById("waAgain").href = url;
+  const text = lines.join("\n");
+  const via = (e.submitter && e.submitter.dataset.via) || "wa";
+  const waUrl = waLink(text);
+  document.getElementById("waAgain").href = waUrl;
   go("done");
-  window.open(url, "_blank", "noopener");
+  if (via === "sms") window.location.href = "sms:" + CONFIG.smsTel + "?&body=" + encodeURIComponent(text);
+  else if (via === "mail") window.location.href = "mailto:" + CONFIG.email + "?subject=" + encodeURIComponent(t("mail.subject") + " — " + v("name")) + "&body=" + encodeURIComponent(text);
+  else window.open(waUrl, "_blank", "noopener");
 });
 
 /* ---------- Mobile quick bar ---------- */
